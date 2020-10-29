@@ -1,7 +1,8 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography} from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import {makeStyles} from "@material-ui/core/styles";
+import {UserRole} from "../../const.js";
 
 const useStyles = makeStyles(() => ({
     card: {
@@ -9,7 +10,7 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         padding: 12,
         height: '100%',
-        minHeight: 355,
+        // minHeight: 355,
         borderRadius: 12,
     },
     cardMedia: {
@@ -32,7 +33,10 @@ const TextLimits = {
 };
 
 const ProductCard = (props) => {
-    const {product} = props;
+    const {
+        product,
+        accessLevel,
+    } = props;
     const classes = useStyles();
 
     const trimmedTitle = product.title.length > TextLimits.TITLE ? `${product.title.slice(0, TextLimits.TITLE)}...` : product.title;
@@ -40,22 +44,30 @@ const ProductCard = (props) => {
     return (
         <Grid item xs={12} sm={6} lg={4}>
             <Card className={classes.card} variant="outlined">
-                <CardActions className={classes.cardActions}>
-                    <IconButton aria-label="delete" size="small">
-                        <ClearIcon/>
-                    </IconButton>
-                </CardActions>
+
+                {accessLevel === UserRole.ADMIN &&
+                <Fragment>
+                    <CardActions className={classes.cardActions}>
+                        <IconButton aria-label="delete" size="small">
+                            <ClearIcon/>
+                        </IconButton>
+                    </CardActions>
+                </Fragment>
+                }
+
                 <CardMedia
                     className={classes.cardMedia}
                     image={product.image}
                     title={product.title}
                 />
+
                 <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h6" component="h2">{trimmedTitle}</Typography>
                     <Typography variant="body2">{trimmedDescription}</Typography>
                     <br/>
                     <Typography component="h2" variant="h6" color="primary">{`$${product.price}`}</Typography>
                 </CardContent>
+
             </Card>
         </Grid>
     );

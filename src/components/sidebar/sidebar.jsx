@@ -1,6 +1,7 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {Grid, Typography, Button, Paper, Divider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {UserRole} from "../../const.js";
 
 const useStyles = makeStyles((theme) => ({
     sidebarContainer: {
@@ -18,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Sidebar = (props) => {
-    const {products} = props;
+    const {
+        products,
+        accessLevel,
+    } = props;
     const classes = useStyles();
 
     const returnTotalSum = () => {
@@ -33,7 +37,7 @@ const Sidebar = (props) => {
     };
 
     return (
-        <Grid item xs={12} sm={6} md={3} >
+        <Grid item xs={12} sm={6} md={3}>
             <Paper variant="outlined" className={classes.sidebarContainer}>
                 <Grid>
                     <Typography component="h2" variant="h6" color="primary" gutterBottom>
@@ -60,11 +64,15 @@ const Sidebar = (props) => {
                     <Typography component="p" variant="h4">{`$${returnAvgPrice()}`}</Typography>
                 </Grid>
 
-                <Divider className={classes.sidebarSectionDivider}/>
+                {accessLevel === UserRole.ADMIN &&
+                <Fragment>
+                    <Divider className={classes.sidebarSectionDivider}/>
 
-                <Grid>
-                    <Button variant="contained" color="secondary">Delete all</Button>
-                </Grid>
+                    <Grid>
+                        <Button variant="contained" color="secondary">Delete all</Button>
+                    </Grid>
+                </Fragment>
+                }
             </Paper>
         </Grid>
     );

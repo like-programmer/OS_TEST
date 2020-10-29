@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CatalogPage = (props) => {
-    const {products} = props;
+    const {
+        products,
+        accessLevel,
+    } = props;
     const classes = useStyles();
 
     return (
@@ -25,10 +28,12 @@ const CatalogPage = (props) => {
 
                         <CatalogList
                             products={products}
+                            accessLevel={accessLevel}
                         />
 
                         <Sidebar
                             products={products}
+                            accessLevel={accessLevel}
                         />
                     </Grid>
                 </main>

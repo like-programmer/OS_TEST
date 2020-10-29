@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const PageHeader = () => {
+const PageHeader = (props) => {
+    const {accessLevel} = props;
     const classes = useStyles();
 
     return (
@@ -45,7 +46,7 @@ const PageHeader = () => {
                             <img src={logoSrc} width={40}/>
                         </Typography>
 
-                        <Typography component="h2" variant="h6" className={classes.roleText}>Role: USER</Typography>
+                        <Typography component="h2" variant="h6" className={classes.roleText}>Role: {accessLevel}</Typography>
 
                         <IconButton aria-label="menu" className={classes.menuIcon}>
                             <MenuIcon/>
