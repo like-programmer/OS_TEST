@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography} from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 import {makeStyles} from "@material-ui/core/styles";
-import {UserRole} from "../../const.js";
+import {TextLimits, UserRole} from "../../const.js";
 
 const useStyles = makeStyles(() => ({
     card: {
@@ -27,11 +27,6 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const TextLimits = {
-    TITLE: 21,
-    DESCRIPTION: 80,
-};
-
 const ProductCard = (props) => {
     const {
         product,
@@ -44,7 +39,6 @@ const ProductCard = (props) => {
     return (
         <Grid item xs={12} sm={6} lg={4}>
             <Card className={classes.card} variant="outlined">
-
                 {accessLevel === UserRole.ADMIN &&
                 <Fragment>
                     <CardActions className={classes.cardActions}>

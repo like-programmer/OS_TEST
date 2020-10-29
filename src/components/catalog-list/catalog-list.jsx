@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     catalogGrid: {
         alignItems: `flex-start`,
     },
-    test: {
+    catalogList: {
         [theme.breakpoints.down(`sm`)]: {
             marginBottom: theme.spacing(4),
         },
@@ -19,16 +19,20 @@ const useStyles = makeStyles((theme) => ({
 
 
 const CatalogList = (props) => {
-    const {products} = props;
+    const {
+        products,
+        accessLevel,
+    } = props;
     const classes = useStyles();
 
     return (
-        <Grid className={classes.test} item xs={12} md={8}>
+        <Grid className={classes.catalogList} item xs={12} md={8}>
             <Grid className={`${classes.catalogGrid} ${classes.test}`} container spacing={3}>
                 {products.map((product, i) => (
                     <ProductCard
                         key={`${product}-${i}`}
                         product={product}
+                        accessLevel={accessLevel}
                     />
                 ))}
             </Grid>

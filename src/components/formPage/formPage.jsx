@@ -1,10 +1,9 @@
 import React, {Fragment} from "react";
 
 import PageHeader from "../page-header/page-header.jsx";
-import CatalogList from "../catalog-list/catalog-list.jsx";
+import AddingForm from "../addingForm/addingForm.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
-
-import {Grid, Container} from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,10 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CatalogPage = (props) => {
+const FormPage = (props) => {
     const {
         products,
         accessLevel,
+        onFormSubmit
     } = props;
     const classes = useStyles();
 
@@ -31,9 +31,8 @@ const CatalogPage = (props) => {
                 <main>
                     <Grid container className={classes.mainGrid}>
 
-                        <CatalogList
-                            products={products}
-                            accessLevel={accessLevel}
+                        <AddingForm
+                        onSubmit={onFormSubmit}
                         />
 
                         <Sidebar
@@ -48,4 +47,4 @@ const CatalogPage = (props) => {
 };
 
 
-export default CatalogPage;
+export default FormPage;

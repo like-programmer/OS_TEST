@@ -9,7 +9,9 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
         borderRadius: 12,
-        background: `rgba(255, 0, 0, 0.1)`,
+        [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+            padding: theme.spacing(3),
+        },
     },
     sidebarSectionDivider: {
         marginTop: theme.spacing(3),

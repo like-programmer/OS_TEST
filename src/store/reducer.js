@@ -4,7 +4,7 @@ import {ActionType} from "./action.js";
 
 const initialState = {
     products: [],
-    accessLevel: UserRole.USER,
+    accessLevel: UserRole.ADMIN,
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +13,12 @@ const reducer = (state = initialState, action) => {
             return extend(state, {
                 products: action.payload,
             });
+
+        case ActionType.ADD_PRODUCT:
+            console.log(action.payload);
+            // return extend(state, {
+            //     products: action.payload,
+            // });
     }
 
     return state;

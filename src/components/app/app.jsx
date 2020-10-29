@@ -1,25 +1,21 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action.js";
 import CatalogPage from "../catalog-page/catalog-page.jsx";
-import PageHeader from "../page-header/page-header";
+import FormPage from "../formPage/formPage.jsx";
 
 const App = (props) => {
     const {
         products,
         accessLevel,
+        onFormSubmit
     } = props;
     return (
-        <Fragment>
-            <PageHeader
-                accessLevel={accessLevel}
-            />
-
-            <CatalogPage
-                products={products}
-                accessLevel={accessLevel}
-            />
-        </Fragment>
+        <FormPage
+            products={products}
+            accessLevel={accessLevel}
+            onFormSubmit={onFormSubmit}
+        />
     );
 };
 
@@ -29,7 +25,11 @@ const mapStateToProps = (state) => ({
     accessLevel: state.accessLevel,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    onFormSubmit(sortType) {
+        dispatch(ActionCreator.addProduct(sortType));
+    },
+});
 
 
 export {App};
