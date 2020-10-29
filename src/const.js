@@ -10,3 +10,9 @@ export const UserRole = {
     ADMIN: `ADMIN`,
 };
 
+export const AppRoute = {
+    ROOT: `/`,
+    ACCESS_DENIED: `/ban-page`,
+    ADD_NEW: `/new-product`,
+};
+

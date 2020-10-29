@@ -12,8 +12,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down(`sm`)]: {
             marginBottom: theme.spacing(4),
         },
-
-        background: `rgba(255, 0, 0, 0.2)`,
     }
 }));
 

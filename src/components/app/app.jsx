@@ -1,8 +1,11 @@
 import React from "react";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action.js";
 import CatalogPage from "../catalog-page/catalog-page.jsx";
 import FormPage from "../formPage/formPage.jsx";
+import BanPage from "../ban-page/ban-page.jsx";
+import {AppRoute} from "../../const.js";
 
 const App = (props) => {
     const {
@@ -11,11 +14,29 @@ const App = (props) => {
         onFormSubmit
     } = props;
     return (
-        <FormPage
-            products={products}
-            accessLevel={accessLevel}
-            onFormSubmit={onFormSubmit}
-        />
+        <BrowserRouter>
+            <Switch>
+                <Route exact path={AppRoute.ROOT}>
+                    <CatalogPage
+                        products={products}
+                        accessLevel={accessLevel}
+                    />
+                </Route>
+                <Route exact path={AppRoute.ADD_NEW}>
+                    <FormPage
+                        products={products}
+                        accessLevel={accessLevel}
+                        onFormSubmit={onFormSubmit}
+                    />
+                </Route>
+                <Route exact path={AppRoute.ACCESS_DENIED}>
+                    <BanPage
+                        products={products}
+                        accessLevel={accessLevel}
+                    />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     );
 };
 
