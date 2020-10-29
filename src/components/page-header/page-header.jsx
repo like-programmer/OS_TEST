@@ -47,17 +47,14 @@ const PageHeader = (props) => {
                         <Typography component="h2" variant="h6"
                                     className={classes.roleText}>Role: {accessLevel}</Typography>
 
-                        <IconButton aria-label="menu" className={classes.menuIcon}>
-                            <MenuIcon/>
-                        </IconButton>
+                        <Link
+                            to={accessLevel === UserRole.ADMIN ? AppRoute.ADD_NEW : AppRoute.ACCESS_DENIED}
+                        >
+                            <IconButton aria-label="menu" className={classes.menuIcon}>
+                                <MenuIcon/>
+                            </IconButton>
+                        </Link>
 
-                        {/*<Link*/}
-                            {/*to={accessLevel === UserRole.ADMIN ? AppRoute.ADD_NEW : AppRoute.ACCESS_DENIED}*/}
-                        {/*>*/}
-                            {/*<IconButton aria-label="clear" className={classes.menuIcon}>*/}
-                                {/*<ClearIcon/>*/}
-                            {/*</IconButton>*/}
-                        {/*</Link>*/}
                     </Toolbar>
                 </Container>
             </AppBar>

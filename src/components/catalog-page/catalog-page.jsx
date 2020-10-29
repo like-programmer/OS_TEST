@@ -19,6 +19,8 @@ const CatalogPage = (props) => {
     const {
         products,
         accessLevel,
+        onProductDeleteBtnClick,
+        onDeleteAllBtnClick,
     } = props;
     const classes = useStyles();
 
@@ -34,11 +36,13 @@ const CatalogPage = (props) => {
                         <CatalogList
                             products={products}
                             accessLevel={accessLevel}
+                            onProductDeleteBtnClick={onProductDeleteBtnClick}
                         />
 
                         <Sidebar
                             products={products}
                             accessLevel={accessLevel}
+                            onDeleteAllBtnClick={onDeleteAllBtnClick}
                         />
                     </Grid>
                 </main>

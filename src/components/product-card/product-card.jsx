@@ -31,6 +31,7 @@ const ProductCard = (props) => {
     const {
         product,
         accessLevel,
+        onDeleteBtnClick,
     } = props;
     const classes = useStyles();
 
@@ -42,7 +43,10 @@ const ProductCard = (props) => {
                 {accessLevel === UserRole.ADMIN &&
                 <Fragment>
                     <CardActions className={classes.cardActions}>
-                        <IconButton aria-label="delete" size="small">
+                        <IconButton aria-label="delete" size="small"
+                        onClick={() => {
+                            onDeleteBtnClick(product.id);
+                        }}>
                             <ClearIcon/>
                         </IconButton>
                     </CardActions>

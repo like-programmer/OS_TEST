@@ -24,6 +24,7 @@ const Sidebar = (props) => {
     const {
         products,
         accessLevel,
+        onDeleteAllBtnClick,
     } = props;
     const classes = useStyles();
 
@@ -34,8 +35,10 @@ const Sidebar = (props) => {
     };
 
     const returnAvgPrice = () => {
-        let sum = returnTotalSum();
-        return (sum / products.length).toFixed(2);
+        const sum = returnTotalSum();
+        const isNumber = (sum / products.length).toFixed(2) !== "NaN";
+
+        return isNumber ? (sum / products.length).toFixed(2) : sum;
     };
 
     return (
@@ -71,7 +74,11 @@ const Sidebar = (props) => {
                     <Divider className={classes.sidebarSectionDivider}/>
 
                     <Grid>
-                        <Button variant="contained" color="secondary">Delete all</Button>
+                        <Button variant="contained" color="secondary"
+                        onClick={onDeleteAllBtnClick}
+                        >
+                            Delete all
+                        </Button>
                     </Grid>
                 </Fragment>
                 }

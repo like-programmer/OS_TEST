@@ -11,7 +11,9 @@ const App = (props) => {
     const {
         products,
         accessLevel,
-        onFormSubmit
+        onFormSubmit,
+        onProductDeleteBtnClick,
+        onDeleteAllBtnClick,
     } = props;
     return (
         <BrowserRouter>
@@ -20,6 +22,8 @@ const App = (props) => {
                     <CatalogPage
                         products={products}
                         accessLevel={accessLevel}
+                        onProductDeleteBtnClick={onProductDeleteBtnClick}
+                        onDeleteAllBtnClick={onDeleteAllBtnClick}
                     />
                 </Route>
                 <Route exact path={AppRoute.ADD_NEW}>
@@ -27,6 +31,7 @@ const App = (props) => {
                         products={products}
                         accessLevel={accessLevel}
                         onFormSubmit={onFormSubmit}
+                        onDeleteAllBtnClick={onDeleteAllBtnClick}
                     />
                 </Route>
                 <Route exact path={AppRoute.ACCESS_DENIED}>
@@ -49,6 +54,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     onFormSubmit(sortType) {
         dispatch(ActionCreator.addProduct(sortType));
+    },
+    onProductDeleteBtnClick(id) {
+        dispatch(ActionCreator.deleteProduct(id));
+    },
+    onDeleteAllBtnClick() {
+        dispatch(ActionCreator.deleteAll());
     },
 });
 

@@ -20,6 +20,7 @@ const CatalogList = (props) => {
     const {
         products,
         accessLevel,
+        onProductDeleteBtnClick,
     } = props;
     const classes = useStyles();
 
@@ -31,6 +32,7 @@ const CatalogList = (props) => {
                         key={`${product}-${i}`}
                         product={product}
                         accessLevel={accessLevel}
+                        onDeleteBtnClick={onProductDeleteBtnClick}
                     />
                 ))}
             </Grid>

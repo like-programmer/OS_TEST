@@ -18,7 +18,8 @@ const FormPage = (props) => {
     const {
         products,
         accessLevel,
-        onFormSubmit
+        onFormSubmit,
+        onDeleteAllBtnClick
     } = props;
     const classes = useStyles();
 
@@ -38,6 +39,7 @@ const FormPage = (props) => {
                         <Sidebar
                             products={products}
                             accessLevel={accessLevel}
+                            onDeleteAllBtnClick={onDeleteAllBtnClick}
                         />
                     </Grid>
                 </main>
