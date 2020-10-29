@@ -1,11 +1,17 @@
-import React from "react";
+import React, {Fragment} from "react";
+import CatalogPage from "../catalog-page/catalog-page.jsx";
+import products from "../../data/products.json";
+import PageHeader from "../page-header/page-header";
 
-
-const App = () => {
+const App = (props) => {
     return (
-        <div>
-            <h1>Hello</h1>
-        </div>
+        <Fragment>
+            <PageHeader/>
+
+            <CatalogPage
+        products={products}
+        />
+        </Fragment>
     );
 };
 
