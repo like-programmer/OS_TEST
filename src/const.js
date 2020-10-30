@@ -1,6 +1,6 @@
 export const TextLimits = {
     TITLE: 21,
-    DESCRIPTION: 80,
+    DESCRIPTION: 50,
 };
 
 export const PRODUCTS_KEY = "catalog";

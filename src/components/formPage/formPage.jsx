@@ -6,6 +6,9 @@ import Sidebar from "../sidebar/sidebar.jsx";
 import {Container, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
+import withAddingForm from "../../hocs/with-adding-form.js";
+const AddingFormWrapped = withAddingForm(AddingForm);
+
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
         justifyContent: `space-between`,
@@ -18,7 +21,6 @@ const FormPage = (props) => {
     const {
         products,
         accessLevel,
-        onFormSubmit,
         onDeleteAllBtnClick
     } = props;
     const classes = useStyles();
@@ -32,9 +34,7 @@ const FormPage = (props) => {
                 <main>
                     <Grid container className={classes.mainGrid}>
 
-                        <AddingForm
-                        onSubmit={onFormSubmit}
-                        />
+                        <AddingFormWrapped/>
 
                         <Sidebar
                             products={products}

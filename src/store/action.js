@@ -10,9 +10,9 @@ export const ActionCreator = {
         type: ActionType.LOAD_PRODUCTS,
         payload: products,
     }),
-    addProduct: (product) => ({
+    addProduct: (newProduct) => ({
         type: ActionType.ADD_PRODUCT,
-        payload: product,
+        payload: newProduct,
     }),
     deleteProduct: (id) => ({
         type: ActionType.DELETE_PRODUCT,

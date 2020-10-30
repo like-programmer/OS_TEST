@@ -1,6 +1,5 @@
 import React from "react";
-import {Grid, makeStyles, Paper, Typography, Button, Divider} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField/TextField";
+import {Grid, makeStyles, Paper, Typography, Button, Divider, TextField} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     formContainer: {
@@ -25,7 +24,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddingForm = (props) => {
-    const {onSubmit} = props;
+    const {
+        title,
+        description,
+        onSubmit,
+        onTitleChange,
+        onDescriptionChange
+    } = props;
     const classes = useStyles();
 
     return (
@@ -40,6 +45,8 @@ const AddingForm = (props) => {
                             label="Title"
                             fullWidth
                             variant="outlined"
+                            value={title}
+                            onChange={onTitleChange}
                         />
                     </Grid>
 
@@ -51,16 +58,14 @@ const AddingForm = (props) => {
                             fullWidth
                             rows={7}
                             variant="outlined"
+                            value={description}
+                            onChange={onDescriptionChange}
                         />
                     </Grid>
 
                     <Grid item xs={12}>
                         <Divider className={classes.sidebarSectionDivider}/>
-                        <Button variant="contained" color="primary"
-                                onClick={(evt) => {
-                                    console.log(evt.target);
-                                }}
-                        >
+                        <Button variant="contained" color="primary" onClick={onSubmit}>
                             Add
                         </Button>
                     </Grid>

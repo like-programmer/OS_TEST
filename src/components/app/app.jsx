@@ -11,7 +11,6 @@ const App = (props) => {
     const {
         products,
         accessLevel,
-        onFormSubmit,
         onProductDeleteBtnClick,
         onDeleteAllBtnClick,
     } = props;
@@ -30,7 +29,6 @@ const App = (props) => {
                     <FormPage
                         products={products}
                         accessLevel={accessLevel}
-                        onFormSubmit={onFormSubmit}
                         onDeleteAllBtnClick={onDeleteAllBtnClick}
                     />
                 </Route>
@@ -52,9 +50,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onFormSubmit(sortType) {
-        dispatch(ActionCreator.addProduct(sortType));
-    },
     onProductDeleteBtnClick(id) {
         dispatch(ActionCreator.deleteProduct(id));
     },
