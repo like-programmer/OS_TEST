@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Grid, makeStyles, Paper, Typography, Button, Divider, TextField} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,7 @@ const AddingForm = (props) => {
         onTitleChange,
         onDescriptionChange
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -73,6 +75,14 @@ const AddingForm = (props) => {
             </Paper>
         </Grid>
     );
+};
+
+AddingForm.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onTitleChange: PropTypes.func.isRequired,
+    onDescriptionChange: PropTypes.func.isRequired,
 };
 
 

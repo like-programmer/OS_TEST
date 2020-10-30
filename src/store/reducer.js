@@ -4,7 +4,7 @@ import {ActionType} from "./action.js";
 
 const initialState = {
     products: [],
-    accessLevel: UserRole.ADMIN,
+    accessLevel: UserRole.USER,
 };
 
 const reducer = (state = initialState, action) => {

@@ -1,6 +1,5 @@
 import React, {Fragment} from "react";
-import {Link} from "react-router-dom";
-
+import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
 import {Container, Divider, Grid, Typography} from "@material-ui/core";
@@ -30,6 +29,7 @@ const BanPage = (props) => {
         products,
         accessLevel,
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -49,11 +49,6 @@ const BanPage = (props) => {
                             <Typography className={classes.banParagraph} gutterBottom component="p" variant="h6"
                                         align="center">You don't have sufficient rights to view this
                                 content.</Typography>
-
-                            {/*<Typography className={classes.banParagraph} gutterBottom component="p" variant="h6"*/}
-                                        {/*align="center">Return to the*/}
-                                {/*{<Link to={`/`}> Main</Link>}*/}
-                                {/*.</Typography>*/}
                         </Grid>
 
                         <Sidebar
@@ -65,6 +60,11 @@ const BanPage = (props) => {
             </Container>
         </Fragment>
     );
+};
+
+BanPage.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
 };
 
 

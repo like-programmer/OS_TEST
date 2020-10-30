@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-
 import {IconButton, Menu, MenuItem} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -24,6 +24,7 @@ const useStyles = makeStyles(() => ({
 
 const MainNav = (props) => {
     const {accessLevel} = props;
+
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,5 +75,8 @@ const MainNav = (props) => {
     );
 };
 
+MainNav.propTypes = {
+    accessLevel: PropTypes.string.isRequired,
+};
 
 export default MainNav;

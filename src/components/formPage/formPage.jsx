@@ -1,11 +1,10 @@
 import React, {Fragment} from "react";
-
+import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header.jsx";
 import AddingForm from "../addingForm/addingForm.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
 import {Container, Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-
 import withAddingForm from "../../hocs/with-adding-form.js";
 const AddingFormWrapped = withAddingForm(AddingForm);
 
@@ -23,6 +22,7 @@ const FormPage = (props) => {
         accessLevel,
         onDeleteAllBtnClick
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -46,6 +46,12 @@ const FormPage = (props) => {
             </Container>
         </Fragment>
     );
+};
+
+FormPage.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
+    onDeleteAllBtnClick: PropTypes.func.isRequired,
 };
 
 

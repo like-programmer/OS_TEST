@@ -1,9 +1,8 @@
 import React, {Fragment} from "react";
-
+import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header.jsx";
 import CatalogList from "../catalog-list/catalog-list.jsx";
 import Sidebar from "../sidebar/sidebar.jsx";
-
 import {Grid, Container} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -22,6 +21,7 @@ const CatalogPage = (props) => {
         onProductDeleteBtnClick,
         onDeleteAllBtnClick,
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -49,6 +49,13 @@ const CatalogPage = (props) => {
             </Container>
         </Fragment>
     );
+};
+
+CatalogPage.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
+    onProductDeleteBtnClick: PropTypes.func.isRequired,
+    onDeleteAllBtnClick: PropTypes.func.isRequired,
 };
 
 

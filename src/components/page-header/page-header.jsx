@@ -1,8 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
+import PropTypes from "prop-types";
 import MainNav from "../main-nav/main-nav.jsx";
-
 import {Container, Grid, Toolbar, Typography, AppBar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import logoSrc from '../../img/logo.svg';
@@ -26,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PageHeader = (props) => {
     const {accessLevel} = props;
+
     const classes = useStyles();
 
     return (
@@ -50,6 +50,10 @@ const PageHeader = (props) => {
             </AppBar>
         </Grid>
     );
+};
+
+PageHeader.propTypes = {
+    accessLevel: PropTypes.string.isRequired,
 };
 
 

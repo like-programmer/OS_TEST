@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import PropTypes from "prop-types";
 import {Grid, Typography, Button, Paper, Divider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {UserRole} from "../../const.js";
@@ -19,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 const Sidebar = (props) => {
     const {
         products,
         accessLevel,
         onDeleteAllBtnClick,
     } = props;
+
     const classes = useStyles();
 
     const returnTotalSum = () => {
@@ -85,6 +86,12 @@ const Sidebar = (props) => {
             </Paper>
         </Grid>
     );
+};
+
+Sidebar.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
+    onDeleteAllBtnClick: PropTypes.func,
 };
 
 

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action.js";
@@ -14,6 +15,7 @@ const App = (props) => {
         onProductDeleteBtnClick,
         onDeleteAllBtnClick,
     } = props;
+
     return (
         <BrowserRouter>
             <Switch>
@@ -41,6 +43,13 @@ const App = (props) => {
             </Switch>
         </BrowserRouter>
     );
+};
+
+App.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
+    onProductDeleteBtnClick: PropTypes.func.isRequired,
+    onDeleteAllBtnClick: PropTypes.func.isRequired,
 };
 
 

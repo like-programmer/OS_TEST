@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ProductCard from "../product-card/product-card";
-
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 const CatalogList = (props) => {
     const {
         products,
         accessLevel,
         onProductDeleteBtnClick,
     } = props;
+
     const classes = useStyles();
 
     return (
@@ -38,6 +38,12 @@ const CatalogList = (props) => {
             </Grid>
         </Grid>
     );
+};
+
+CatalogList.propTypes = {
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    accessLevel: PropTypes.string.isRequired,
+    onProductDeleteBtnClick: PropTypes.func.isRequired,
 };
 
 

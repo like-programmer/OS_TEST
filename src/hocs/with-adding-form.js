@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../store/action.js";
 
@@ -68,6 +69,10 @@ const withAddingForm = (Component) => {
             );
         }
     }
+
+    WithAddingForm.propTypes = {
+        uploadProduct: PropTypes.func.isRequired,
+    };
 
     const mapDispatchToProps = (dispatch) => ({
         uploadProduct(newProduct) {
